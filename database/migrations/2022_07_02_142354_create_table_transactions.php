@@ -21,9 +21,13 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('from_card')
+                ->references('id')
+                ->on('cards')
                 ->cascadeOnUpdate()
                 ->restrictOnDelete();
             $table->foreign('to_card')
+                ->references('id')
+                ->on('cards')
                 ->cascadeOnUpdate()
                 ->restrictOnDelete();
         });
