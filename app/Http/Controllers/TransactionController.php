@@ -30,6 +30,7 @@ class TransactionController extends Controller
         if ($fromCard->account->balance < $data['amount'])
             return response()->json(['error' => 'Insufficient funds'], 406);
 
+        $fromCard->account->decrement('balance', $data['amount']);
         $transaction = Transaction::create($data);
 
         return response()->json($transaction, 201);

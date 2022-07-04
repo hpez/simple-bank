@@ -33,6 +33,6 @@ class Transaction extends Model
 
     public function commissionCharge()
     {
-        return $this->hasOne(Transaction::class);
+        return $this->hasOne(CommissionCharge::class);
     }
 }

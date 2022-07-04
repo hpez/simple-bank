@@ -10,16 +10,14 @@ use Illuminate\Queue\InteractsWithQueue;
 
 class GenerateCommissionTransaction
 {
-    private $transaction;
-
     /**
      * Create the event listener.
      *
      * @return void
      */
-    public function __construct(Transaction $transaction)
+    public function __construct()
     {
-        $this->transaction = $transaction;
+
     }
 
     /**
@@ -30,9 +28,10 @@ class GenerateCommissionTransaction
      */
     public function handle(TransactionSaved $event)
     {
-        $this->transaction->commissionCharge()->create([
+        $transaction = $event->transaction;
+        $transaction->commissionCharge()->create([
             'amount' => env('COMMISSION_CHARGE_AMOUNT')
         ]);
-        $this->transaction->fromCard->account->user()->decrement(env('COMMISSION_CHARGE_AMOUNT'));
+        $transaction->fromCard->account->decrement('balance', env('COMMISSION_CHARGE_AMOUNT'));
     }
 }

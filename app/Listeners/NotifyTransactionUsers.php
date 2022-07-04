@@ -13,16 +13,14 @@ use Illuminate\Queue\InteractsWithQueue;
 
 class NotifyTransactionUsers
 {
-    private $transaction;
-
     /**
      * Create the event listener.
      *
      * @return void
      */
-    public function __construct(Transaction $transaction)
+    public function __construct()
     {
-        $this->transaction = $transaction;
+
     }
 
     /**
@@ -33,11 +31,13 @@ class NotifyTransactionUsers
      */
     public function handle(TransactionSaved $event)
     {
-        $this->transaction->fromCard->account->user->notify(new WithdrawMade($this->transaction));
+        $transaction = $event->transaction;
+
+        $transaction->fromCard->account->user->notify(new WithdrawMade($transaction));
 
         try {
-            $toCard = Card::findOrFail($this->transaction->to_card);
-            $toCard->account->user->notify(new DepositMade($this->transaction));
+            $toCard = Card::findOrFail($transaction->to_card);
+            $toCard->account->user->notify(new DepositMade($transaction));
         } catch (ModelNotFoundException) {}
     }
 }
