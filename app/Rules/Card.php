@@ -2,6 +2,7 @@
 
 namespace App\Rules;
 
+use App\Helpers\Number;
 use Illuminate\Contracts\Validation\InvokableRule;
 
 class Card implements InvokableRule
@@ -16,6 +17,8 @@ class Card implements InvokableRule
      */
     public function __invoke($attribute, $value, $fail)
     {
+        $value = Number::convert((string) $value);
+
         // Length should be 16
         if (strlen($value) != 16)
             $fail(':attribute length should be equal to 16');
