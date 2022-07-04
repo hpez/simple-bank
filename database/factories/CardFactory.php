@@ -18,7 +18,7 @@ class CardFactory extends Factory
     {
         return [
             'id' => fake()->numerify('################'),
-            'account_id' => 1
+            'account_id' => 1234567890
         ];
     }
 }

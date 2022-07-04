@@ -16,15 +16,15 @@ class CardSeeder extends Seeder
     public function run()
     {
         Card::factory()
-            ->make([
-                'id' => '5022291012345678'
+            ->create([
+                'id' => '5022291075971836'
             ]);
         Card::factory()
-            ->make([
+            ->create([
                 'id' => '5022291012345679'
             ]);
         Card::factory()
-            ->make([
+            ->create([
                 'id' => '5022291012345673'
             ]);
     }

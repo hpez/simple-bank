@@ -18,7 +18,8 @@ class AccountFactory extends Factory
     {
         return [
             'id' => fake()->numerify('##########'),
-            'user_id' => 1
+            'user_id' => 1,
+            'balance' => 5000000
         ];
     }
 }

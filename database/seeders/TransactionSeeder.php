@@ -9,6 +9,8 @@ use Illuminate\Database\Seeder;
 
 class TransactionSeeder extends Seeder
 {
+    use WithoutModelEvents;
+
     /**
      * Run the database seeds.
      *
@@ -18,15 +20,17 @@ class TransactionSeeder extends Seeder
     {
         Transaction::factory()
             ->has(CommissionCharge::factory()->count(1))
-            ->make([
-                'from_card' => '5022291012345678',
-                'to_card' => '5022291012345679'
+            ->create([
+                'from_card' => '5022291075971836',
+                'to_card' => '5022291012345679',
+                'amount' => 1000
             ]);
         Transaction::factory()
             ->has(CommissionCharge::factory()->count(1))
-            ->make([
-                'from_card' => '5022291012345679',
-                'to_card' => '5022291012345678'
+            ->create([
+                'from_card' => '5022291075971836',
+                'to_card' => '5022291012345678',
+                'amount' => 2000
             ]);
     }
 }

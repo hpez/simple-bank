@@ -19,7 +19,7 @@ class TransactionFactory extends Factory
         return [
             'from_card' => fake()->numerify('################'),
             'to_card' => fake()->numerify('################'),
-            'amount' => fake()->numberBetween()
+            'amount' => fake()->numberBetween(500, 500000000)
         ];
     }
 }

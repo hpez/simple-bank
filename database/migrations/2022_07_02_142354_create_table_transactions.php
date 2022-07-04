@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('from_card');
             $table->unsignedBigInteger('to_card');
-            $table->decimal('amount', 10, 2);
+            $table->decimal('amount', 11, 2);
             $table->timestamps();
 
             $table->foreign('from_card')
@@ -25,11 +25,11 @@ return new class extends Migration
                 ->on('cards')
                 ->cascadeOnUpdate()
                 ->restrictOnDelete();
-            $table->foreign('to_card')
-                ->references('id')
-                ->on('cards')
-                ->cascadeOnUpdate()
-                ->restrictOnDelete();
+//            $table->foreign('to_card')
+//                ->references('id')
+//                ->on('cards')
+//                ->cascadeOnUpdate()
+//                ->restrictOnDelete();
         });
     }
 
