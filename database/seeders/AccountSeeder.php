@@ -17,7 +17,23 @@ class AccountSeeder extends Seeder
     {
         Account::factory()
             ->create([
-                'id' => '1234567890'
+                'id' => '1234567890',
+                'user_id' => 1
+            ]);
+        Account::factory()
+            ->create([
+                'id' => '1234567891',
+                'user_id' => 2
+            ]);
+        Account::factory()
+            ->create([
+                'id' => '1234567892',
+                'user_id' => 3
+            ]);
+        Account::factory()
+            ->create([
+                'id' => '1234567893',
+                'user_id' => 4
             ]);
         Account::factory()
             ->count(4)

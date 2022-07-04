@@ -17,15 +17,23 @@ class CardSeeder extends Seeder
     {
         Card::factory()
             ->create([
-                'id' => '5022291075971836'
+                'id' => '5022291075971836',
+                'account_id' => '1234567890',
             ]);
         Card::factory()
             ->create([
-                'id' => '5022291012345679'
+                'id' => '5022291012345672',
+                'account_id' => '1234567891',
             ]);
         Card::factory()
             ->create([
-                'id' => '5022291012345673'
+                'id' => '5022271212345672',
+                'account_id' => '1234567892',
+            ]);
+        Card::factory()
+            ->create([
+                'id' => '5022271410345672',
+                'account_id' => '1234567893',
             ]);
     }
 }

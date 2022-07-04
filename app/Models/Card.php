@@ -18,4 +18,9 @@ class Card extends Model
     {
         return $this->belongsTo(Account::class);
     }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class, 'from_card', 'id');
+    }
 }
