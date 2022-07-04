@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\TransactionSaved;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,6 +14,11 @@ class Transaction extends Model
         'from_card',
         'to_card',
         'amount'
+    ];
+
+
+    protected $dispatchesEvents = [
+        'created' => TransactionSaved::class
     ];
 
     public function fromCard()
